@@ -1,0 +1,1 @@
+insert into article(aid,username,title,type,content) values(1,'deepti','titlevalue','typevalue','contentvalue');
