@@ -1,35 +1,38 @@
 package com.example.Artilce.model;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import org.springframework.web.multipart.MultipartFile;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 public class Article {
 
 	@Id
 	private int aid;
-	private String username;
+	private int uid;
 	private String title;
 	private String type;
 	private String content;
 	private String image;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
+	
+	
 	
 	
 	public Article() {
 		
 	}
-	public Article(int aid, String username, String title, String type,  String content, String image) {
+	public Article(int aid, int uid , String title, String type,  String content, String image,Date date) {
 		super();
 		this.aid = aid;
-		this.username = username;
+		this.uid = uid;
 		this.title = title;
 		this.type = type;
 		this.content = content;
 		this.image=image;
+		this.date=date;
 	}
 	public int getAid() {
 		return aid;
@@ -37,11 +40,13 @@ public class Article {
 	public void setAid(int aid) {
 		this.aid = aid;
 	}
-	public String getUsername() {
-		return username;
+	
+	
+	public int getUid() {
+		return uid;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 	public String getTitle() {
 		return title;
@@ -66,6 +71,18 @@ public class Article {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Date getDate() {
+		return date;
+	}
+	@Override
+	public String toString() {
+		return "Article [aid=" + aid + ", uid=" + uid + ", title=" + title + ", type=" + type + ", content=" + content
+				+ ", image=" + image + ", date=" + date + "]";
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.example.Artilce.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,20 +37,20 @@ public class ArticleController {
 	}
 	
 	@PutMapping
-	public Article updateArticle(@RequestParam("aid") int aid,@RequestParam("username") String username,@RequestParam("title") String title,
+	public Article updateArticle(@RequestParam("aid") int aid,@RequestParam("uid") int uid,@RequestParam("title") String title,
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
 		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-		Article art=new Article(aid,username,title,type,content,fileName);
+		Article art=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
 		return service.updateArticle(art,image);
 	}
 	
 	@PostMapping
-	public Article addArticle(@RequestParam("aid") int aid,@RequestParam("username") String username,@RequestParam("title") String title,
+	public Article addArticle(@RequestParam("aid") int aid,@RequestParam("uid") int uid,@RequestParam("title") String title,
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
 		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-		Article art=new Article(aid,username,title,type,content,fileName);
+		Article art=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
 		return service.addArticle(art,image);
 	}
 	
