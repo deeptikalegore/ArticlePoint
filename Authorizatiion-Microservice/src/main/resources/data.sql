@@ -1,3 +1,3 @@
-insert into users (id, password, user_name) values (1, '$2a$10$BhBZRNJZKsGHc4K6oC64w.EQWT7mb2DcgBXT0CkJMBxJDLHIfkCkK', 'admin');
-insert into users (id, password, user_name) values (2, '$2a$10$8rh5etTl0pTNQC7200wZMuaydnccxjEFP7EAtAzJBgv5Kaa9X6QDO', 'user1');
-insert into users (id, password, user_name) values (3, '$2a$10$YnXvrEntVWd89EpHhqubbO8EPfAQrjgnYevbuSaHJ81C0B/vANp9y', 'user2');
+insert into users(id,user_name,name,email,password,number,role) values(1,'deep','deepti kalegore','deepti@gmail.com','deepti123',789654123,'admin');
+
+insert into users(id,user_name,name,email,password,number,role) values(2,'dheeraj','dheeraj vishwakarma','dheeraj@gmail.com','dheeraj123',769825523,'user');

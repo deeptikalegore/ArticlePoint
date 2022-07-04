@@ -1,4 +1,4 @@
-package com.cts.controller;
+package com.cts.authorization.controller;
 
 import java.util.List;
 
@@ -12,34 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.model.Admin;
-import com.cts.serviceimpl.UserServiceImpl;
+import com.cts.authorization.impl.UserServiceImpl;
+import com.cts.authorization.model.User;
+
 
 @RestController
-@RequestMapping("/admin")
-public class AdminController {
-	
+@RequestMapping("/user")
+public class UsersController {
+
 	@Autowired
 	private UserServiceImpl uService;
 	
 	@GetMapping
-	public List<Admin> getAdmin(){
-		return uService.getAdminList();
+	public List<User> getUsers(){
+		return uService.getUsersList();
 	}
 	
 	@PostMapping
-	public Admin addAdmin(@RequestBody Admin admin) {
-		return uService.addAdmin(admin);
+	public User addUsers(@RequestBody User user) {
+		return uService.addUsers(user);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteAdmin(@PathVariable int id) {
-		return uService.deleteAdmin(id);
+	public String deleteUsers(@PathVariable int id) {
+		return uService.deleteUsers(id);
 	}
 	
 	@PutMapping
-	public Admin updateAdmin(@RequestBody Admin admin) {
-		return uService.updateAdmin(admin);
+	public User updateUsers(@RequestBody User user) {
+		return uService.updateUsers(user);
 	}
 	
 	

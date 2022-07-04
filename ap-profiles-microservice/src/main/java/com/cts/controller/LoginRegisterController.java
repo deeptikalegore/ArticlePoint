@@ -78,6 +78,7 @@ public class LoginRegisterController {
 		@SuppressWarnings("unchecked")
 		Map<String, String> tokenMap = (Map<String, String>) responseGenerated.getBody();
 		String token = tokenMap.get("token");
+		System.out.println(token);
 		request.getSession().setAttribute("Authorization", "Bearer " + token);
 		request.getSession().setAttribute("userName", user.getUserName());
 		return "admin-welcome-page";
