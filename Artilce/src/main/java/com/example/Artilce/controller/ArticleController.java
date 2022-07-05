@@ -38,18 +38,16 @@ public class ArticleController {
 	public Article updateArticle(@RequestParam("aid") int aid,@RequestParam("uid") int uid,@RequestParam("title") String title,
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
-		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-		Article art=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
-		return service.updateArticle(art,image);
+		
+		return service.updateArticle(aid,uid,title,type,content,image);
 	}
 	
 	@PostMapping
 	public Article addArticle(@RequestParam("aid") int aid,@RequestParam("uid") int uid,@RequestParam("title") String title,
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
-		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-		Article art=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
-		return service.addArticle(art,image);
+		
+		return service.addArticle(aid,uid,title,type,content,image);
 	}
 	
 

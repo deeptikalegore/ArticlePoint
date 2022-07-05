@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.Artilce.model.Article;
 import com.example.Artilce.repository.ArticleRepository;
@@ -30,8 +32,10 @@ public class ArticleService {
 	}
 
 
-	public Article addArticle(Article art,MultipartFile image) throws IOException {
-		
+	public Article addArticle(int aid,int uid, String title,
+			String type,String content, MultipartFile image)throws IOException {
+		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+		Article art=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
  
 		String uploadDir = "src/main/resources/static/images/" + art.getAid();
         Path uploadPath = Paths.get(uploadDir);
@@ -58,7 +62,11 @@ public class ArticleService {
 	}
 
 
-	public Article updateArticle(Article article,MultipartFile image) throws IOException {
+	public Article updateArticle(int aid,int uid, String title,
+			String type,String content, MultipartFile image) throws IOException {
+		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+		Article article=new Article(aid,uid,title,type,content,fileName,new Date(System.currentTimeMillis()));
+		
 		Optional<Article> op=repo.findById(article.getAid());
 		if(!op.isPresent()) {
 			throw new RuntimeException("Article with id "+ article.getAid()+ " not exist!");
