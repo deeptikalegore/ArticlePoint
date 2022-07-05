@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>International Patients Management System</title>
+<title>Article Point</title>
 </head>
 
 <body>
 	<div class="main-container-register">
 		<div class="section grid">
 			<div class="content">
-			<h1>Welcome Admin</h1>
+			<h1> Welcome Admin </h1>
 			</div>
 		</div>
 	</div>

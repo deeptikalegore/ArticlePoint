@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>International Patients Management System</title>
+<title>Article Point</title>
 
 </head>
 <body>

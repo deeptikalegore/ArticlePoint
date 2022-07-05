@@ -17,23 +17,22 @@ import com.cts.authorization.model.User;
 
 
 @RestController
-@RequestMapping("/user")
 public class UsersController {
 
 	@Autowired
 	private UserServiceImpl uService;
 	
-	@GetMapping
+	@GetMapping("users")
 	public List<User> getUsers(){
 		return uService.getUsersList();
 	}
 	
-	@PostMapping
+	@PostMapping("adduser")
 	public User addUsers(@RequestBody User user) {
 		return uService.addUsers(user);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("delete/{id}")
 	public String deleteUsers(@PathVariable int id) {
 		return uService.deleteUsers(id);
 	}
