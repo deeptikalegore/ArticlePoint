@@ -15,6 +15,7 @@ public class Article {
 	private String type;
 	private String content;
 	private String image;
+	private int likes=0;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
@@ -84,7 +85,13 @@ public class Article {
 		return "Article [aid=" + aid + ", uid=" + uid + ", title=" + title + ", type=" + type + ", content=" + content
 				+ ", image=" + image + ", date=" + date + "]";
 	}
-	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
 	
 	
 	
