@@ -1,11 +1,9 @@
-package com.example.Artilce.controller;
+package com.cts.controller;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,22 +14,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.Artilce.model.Article;
-import com.example.Artilce.service.ArticleService;
+import com.cts.feign.ArtilceFeign;
+import com.cts.model.Article;
 
 @RestController
+@RequestMapping(value="/portal")
 public class ArticleController {
-
+	
 	@Autowired
-	private ArticleService service;
+	private ArtilceFeign artilceFeign;
 	
 	@GetMapping("/articles")
 	public List<Article> getArticle(){
-		return service.getArticle();
+		return artilceFeign.getArticle();
 	}
 	@GetMapping("/articles/{id}")
 	public Article getById(@PathVariable int id) {
-		return service.getById(id);
+		return artilceFeign.getById(id);
 	}
 	
 	@PutMapping("/updatearticle")
@@ -39,7 +38,7 @@ public class ArticleController {
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
 		
-		return service.updateArticle(aid,uid,title,type,content,image);
+		return artilceFeign.updateArticle(aid,uid,title,type,content,image);
 	}
 	
 	@PostMapping("/postarticle")
@@ -47,14 +46,14 @@ public class ArticleController {
 			@RequestParam("type") String type,@RequestParam("content") String content,@RequestParam("image") MultipartFile image) throws IOException
 	{
 		
-		return service.addArticle(aid,uid,title,type,content,image);
+		return artilceFeign.addArticle(aid,uid,title,type,content,image);
 	}
 	
 
 	
 	@DeleteMapping("/article/{id}")
 	public Article deleteArticle(@PathVariable int id) {
-		return service.deleteArticle(id);
+		return artilceFeign.deleteArticle(id);
 	}
 	
 }

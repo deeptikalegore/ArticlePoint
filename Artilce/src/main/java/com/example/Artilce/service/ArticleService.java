@@ -106,7 +106,7 @@ public class ArticleService {
 		return art;
 	}
 
-	public Article getArticleById(int id) {
+	public Article getById(int id) {
 		return repo.findById(id).orElseThrow(()->new RuntimeException("Article with id"+id+"not exist"));
 	}
 }
